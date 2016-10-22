@@ -1,0 +1,26 @@
+<h2>Listing applications</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for application <- @applications do %>
+    <tr>
+      <td><%= application.name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: application_path(@conn, :show, application), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: application_path(@conn, :edit, application), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: application_path(@conn, :delete, application), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New application", to: application_path(@conn, :new) %>

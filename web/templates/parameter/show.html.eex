@@ -1,0 +1,18 @@
+<h2>Show parameter</h2>
+
+<ul>
+
+  <li>
+    <strong>Key:</strong>
+    <%= @parameter.key %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @parameter.value %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: parameter_path(@conn, :edit, @parameter) %>
+<%= link "Back", to: parameter_path(@conn, :index) %>

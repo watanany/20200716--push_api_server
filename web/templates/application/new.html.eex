@@ -1,0 +1,6 @@
+<h2>New application</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: application_path(@conn, :create) %>
+
+<%= link "Back", to: application_path(@conn, :index) %>

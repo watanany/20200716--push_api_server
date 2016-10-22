@@ -1,0 +1,28 @@
+<h2>Listing parameters</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for parameter <- @parameters do %>
+    <tr>
+      <td><%= parameter.key %></td>
+      <td><%= parameter.value %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: parameter_path(@conn, :show, parameter), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: parameter_path(@conn, :edit, parameter), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: parameter_path(@conn, :delete, parameter), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New parameter", to: parameter_path(@conn, :new) %>
