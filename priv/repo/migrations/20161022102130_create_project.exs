@@ -3,9 +3,9 @@ defmodule PushApiServer.Repo.Migrations.CreateProject do
 
   def change do
     create table(:projects) do
-      add :user_id, references(:users)
-      add :name, :string
-      add :server_key, :string
+      add :user_id, references(:users, on_delete: :delete_all)
+      add :name, :string, null: false
+      add :server_key, :string, null: false
 
       timestamps()
     end

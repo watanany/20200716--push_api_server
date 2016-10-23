@@ -3,8 +3,8 @@ defmodule PushApiServer.Repo.Migrations.CreateUser do
 
   def change do
     create table(:users) do
-      add :email, :string
-      add :encrypted_password, :string
+      add :email, :string, null: false
+      add :encrypted_password, :string, null: false
 
       timestamps()
     end

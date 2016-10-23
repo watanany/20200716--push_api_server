@@ -3,8 +3,8 @@ defmodule PushApiServer.Repo.Migrations.CreateApplication do
 
   def change do
     create table(:applications) do
-      add :project_id, references(:projects)
-      add :name, :string
+      add :project_id, references(:projects, on_delete: :delete_all)
+      add :name, :string, null: false
 
       timestamps()
     end
