@@ -11,6 +11,6 @@ defmodule PushApiServer.Repo.Migrations.CreateProject do
     end
 
     create index(:projects, :name)
-    create unique_index(:server_key)
+    create unique_index(:projects, :server_key)
   end
 end
