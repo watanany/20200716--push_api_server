@@ -7,6 +7,7 @@ defmodule PushApiServer.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PushApiServer.AuthPlug
   end
 
   pipeline :api do
@@ -16,7 +17,14 @@ defmodule PushApiServer.Router do
   scope "/", PushApiServer do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", PageController, :index, as: :root
+
+    get "/signup", RegistrationController, :new
+    get "/signin", SessionController, :new
+
+    resources "/registrations", RegistrationController, only: [:new, :create]
+    resources "/passwords", PasswordController
+    resources "/sessions", SessionController
 
     resources "/projects", ProjectController
     resources "/requests", RequestController

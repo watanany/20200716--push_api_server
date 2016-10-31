@@ -3,6 +3,8 @@ defmodule PushApiServer.ProjectController do
 
   alias PushApiServer.Project
 
+  plug PushApiServer.AuthPlug
+
   def index(conn, _params) do
     projects = Repo.all(Project)
     render(conn, "index.html", projects: projects)
