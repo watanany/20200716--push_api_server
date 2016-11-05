@@ -12,6 +12,7 @@ defmodule PushApiServer.SessionController do
     email = Map.get(user_params, :email)
     password = Map.get(user_params, :password)
     encrypted_password = if password, do: Util.hash(password), else: nil
+    refer = params["refer"]
 
     user =
       if email && encrypted_password do
@@ -26,9 +27,9 @@ defmodule PushApiServer.SessionController do
       %User{} ->
         conn
         |> put_session(:current_user, user.id)
-        |> redirect(to: params["refer"])
+        |> redirect(to: refer)
       nil ->
-        new_params = if params["refer"] != "", do: %{"refer" => params["refer"]}, else: %{}
+        new_params = if refer != "", do: %{"refer" => refer}, else: %{}
         conn
         |> redirect(to: signin_path(conn, :new, new_params))
     end
