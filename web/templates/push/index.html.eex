@@ -1,0 +1,24 @@
+<h2>Listing pushes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for push <- @pushes do %>
+    <tr>
+
+      <td class="text-right">
+        <%= link "Show", to: push_path(@conn, :show, push), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: push_path(@conn, :edit, push), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: push_path(@conn, :delete, push), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New push", to: push_path(@conn, :new) %>

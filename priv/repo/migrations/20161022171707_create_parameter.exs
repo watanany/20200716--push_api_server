@@ -3,7 +3,7 @@ defmodule PushApiServer.Repo.Migrations.CreateParameter do
 
   def change do
     create table(:parameters) do
-      add :request_id, references(:requests, on_delete: :delete_all)
+      add :push_id, references(:pushes, on_delete: :delete_all)
       add :key, :string, null: false
       add :value, :string, null: false
 

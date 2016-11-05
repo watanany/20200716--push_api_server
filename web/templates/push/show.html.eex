@@ -1,0 +1,8 @@
+<h2>Show push</h2>
+
+<ul>
+
+</ul>
+
+<%= link "Edit", to: push_path(@conn, :edit, @push) %>
+<%= link "Back", to: push_path(@conn, :index) %>

@@ -5,6 +5,8 @@ defmodule PushApiServer.Parameter do
     field :key, :string
     field :value, :string
 
+    belongs_to :push, PushApiServer.Push
+
     timestamps()
   end
 
@@ -13,7 +15,7 @@ defmodule PushApiServer.Parameter do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:key, :value])
-    |> validate_required([:key, :value])
+    |> cast(params, [:push_id, :key, :value])
+    |> validate_required([:push_id, :key, :value])
   end
 end

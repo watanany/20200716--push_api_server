@@ -35,7 +35,7 @@ defmodule PushApiServer.Router do
     pipe_through [:browser, :authorization]
 
     resources "/projects", ProjectController
-    resources "/requests", RequestController
+    resources "/pushes", PushController
     resources "/parameters", ParameterController
 
     resources "/users", UserController do
@@ -43,7 +43,7 @@ defmodule PushApiServer.Router do
     end
 
     resources "/applications", ApplicationController do
-      resources "/requests", RequestController do
+      resources "/pushes", PushController do
         resources "/parameters", ParameterController
       end
     end
