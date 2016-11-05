@@ -3,27 +3,34 @@ defmodule PushApiServer.SessionController do
 
   alias PushApiServer.User
 
-  def new(conn, _params) do
+  def new(conn, params) do
     changeset = User.changeset(%User{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, refer: params["refer"])
   end
 
-  def create(conn, %{"user" => user_params}) do
-    email = user_params.email
-    encrypted_password = Util.hash(user_params.password)
+  def create(conn, params = %{"user" => user_params}) do
+    email = Map.get(user_params, :email)
+    password = Map.get(user_params, :password)
+    encrypted_password = if password, do: Util.hash(password), else: nil
 
-    user = User
-    |> Ecto.Query.where(email: ^email, encrypted_password: ^encrypted_password)
-    |> Repo.one
+    user =
+      if email && encrypted_password do
+        User
+        |> Ecto.Query.where(email: ^email, encrypted_password: ^encrypted_password)
+        |> Repo.one
+      else
+        nil
+      end
 
     case user do
       %User{} ->
         conn
         |> put_session(:current_user, user.id)
-        |> redirect(to: root_path(conn, :index))
+        |> redirect(to: params["refer"])
       nil ->
+        new_params = if params["refer"] != "", do: %{"refer" => params["refer"]}, else: %{}
         conn
-        |> redirect(to: "/signin")
+        |> redirect(to: signin_path(conn, :new, new_params))
     end
   end
 

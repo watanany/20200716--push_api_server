@@ -2,6 +2,7 @@
 
 <%= render "form.html", conn: @conn,
                         changeset: @changeset,
-                        action: user_path(@conn, :create) %>
+                        action: user_path(@conn, :create),
+                        refer: @refer %>
 
 <%= link "Back", to: user_path(@conn, :index) %>
