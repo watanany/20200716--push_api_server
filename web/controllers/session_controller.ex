@@ -9,8 +9,8 @@ defmodule PushApiServer.SessionController do
   end
 
   def create(conn, params = %{"user" => user_params}) do
-    email = Map.get(user_params, :email)
-    password = Map.get(user_params, :password)
+    email = Map.get(user_params, "email")
+    password = Map.get(user_params, "password")
     encrypted_password = if password, do: Util.hash(password), else: nil
     refer = params["refer"]
 
@@ -25,9 +25,10 @@ defmodule PushApiServer.SessionController do
 
     case user do
       %User{} ->
+        redirect_path = if refer != "", do: refer, else: "/"
         conn
-        |> put_session(:current_user, user.id)
-        |> redirect(to: refer)
+        |> put_session(:current_user_id, user.id)
+        |> redirect(to: redirect_path)
       nil ->
         new_params = if refer != "", do: %{"refer" => refer}, else: %{}
         conn
@@ -37,7 +38,7 @@ defmodule PushApiServer.SessionController do
 
   def delete(conn, %{"id" => id}) do
     conn
-    |> delete_session(:current_user)
+    |> delete_session(:current_user_id)
     |> redirect(to: root_path(conn, :index))
   end
 end

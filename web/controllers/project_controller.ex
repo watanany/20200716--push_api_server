@@ -14,6 +14,8 @@ defmodule PushApiServer.ProjectController do
   end
 
   def create(conn, %{"project" => project_params}) do
+    current_user = conn.assigns[:current_user]
+    project_params = Map.put(project_params, "user_id", current_user.id)
     changeset = Project.changeset(%Project{}, project_params)
 
     case Repo.insert(changeset) do
@@ -27,6 +29,7 @@ defmodule PushApiServer.ProjectController do
   end
 
   def show(conn, %{"id" => id}) do
+    require IEx; IEx.pry
     project = Repo.get!(Project, id)
     render(conn, "show.html", project: project)
   end

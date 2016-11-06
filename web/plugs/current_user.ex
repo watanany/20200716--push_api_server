@@ -5,13 +5,18 @@ defmodule PushApiServer.Plugs.CurrentUser do
   alias PushApiServer.Repo
   alias PushApiServer.User
 
-  def init(default), do: default
+  def init(default) do
+    default
+  end
 
   def call(conn, _) do
-    user_id = get_session(conn, :current_user)
+    current_user_id = get_session(conn, :current_user_id)
     current_user =
-      if user_id do
-        User |> Ecto.Query.where(id: ^user_id) |> Repo.one
+      if current_user_id do
+        User
+        |> Ecto.Query.where(id: ^current_user_id)
+        |> Repo.one
+        |> Repo.preload(projects: [applications: [pushes: :parameters]])
       else
         nil
       end

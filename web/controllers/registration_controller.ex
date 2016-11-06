@@ -16,7 +16,7 @@ defmodule PushApiServer.RegistrationController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> put_session(:current_user, user.id)
+        |> put_session(:current_user_id, user.id)
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
         conn |> redirect(to: "/signup")
