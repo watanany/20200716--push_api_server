@@ -5,6 +5,18 @@ defmodule PushApiServer.Plugs.CurrentUser do
   alias PushApiServer.Repo
   alias PushApiServer.User
 
+  defmacro __using__(_) do
+    quote do
+      plug PushApiServer.Plugs.CurrentUser
+
+      defmacro current_user do
+        quote do
+          var!(conn).assigns[:current_user]
+        end
+      end
+    end
+  end
+
   def init(default) do
     default
   end

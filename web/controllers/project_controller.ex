@@ -1,20 +1,20 @@
 defmodule PushApiServer.ProjectController do
   use PushApiServer.Web, :controller
+  use PushApiServer.Plugs.CurrentUser
 
   alias PushApiServer.Project
 
   def index(conn, _params) do
-    projects = Repo.all(Project)
+    projects = Repo.all(Project, user_id: current_user.id)
     render(conn, "index.html", projects: projects)
   end
 
   def new(conn, _params) do
-    changeset = Project.changeset(%Project{})
+    changeset = Project.changeset(%Project{user_id: current_user.id})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"project" => project_params}) do
-    current_user = conn.assigns[:current_user]
     project_params = Map.put(project_params, "user_id", current_user.id)
     changeset = Project.changeset(%Project{}, project_params)
 
@@ -29,19 +29,18 @@ defmodule PushApiServer.ProjectController do
   end
 
   def show(conn, %{"id" => id}) do
-    require IEx; IEx.pry
-    project = Repo.get!(Project, id)
+    project = Repo.get_by!(Project, id: id, user_id: current_user.id)
     render(conn, "show.html", project: project)
   end
 
   def edit(conn, %{"id" => id}) do
-    project = Repo.get!(Project, id)
+    project = Repo.get_by!(Project, id: id, user_id: current_user.id)
     changeset = Project.changeset(project)
     render(conn, "edit.html", project: project, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "project" => project_params}) do
-    project = Repo.get!(Project, id)
+    project = Repo.get_by!(Project, id: id, user_id: current_user.id)
     changeset = Project.changeset(project, project_params)
 
     case Repo.update(changeset) do
@@ -55,7 +54,7 @@ defmodule PushApiServer.ProjectController do
   end
 
   def delete(conn, %{"id" => id}) do
-    project = Repo.get!(Project, id)
+    project = Repo.get_by!(Project, id: id, user_id: current_user.id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).

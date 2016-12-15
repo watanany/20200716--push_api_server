@@ -36,7 +36,7 @@ defmodule PushApiServer.SessionController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, _) do
     conn
     |> delete_session(:current_user_id)
     |> redirect(to: root_path(conn, :index))

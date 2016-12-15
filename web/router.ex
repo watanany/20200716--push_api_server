@@ -9,10 +9,6 @@ defmodule PushApiServer.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :authorization do
-    plug PushApiServer.Plugs.CurrentUser
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -24,27 +20,21 @@ defmodule PushApiServer.Router do
 
     get "/signup", RegistrationController, :new, as: :signup
     get "/signin", SessionController, :new, as: :signin
+    delete "/signout", SessionController, :delete, as: :signout
 
     resources "/registrations", RegistrationController, only: [:new, :create]
     resources "/passwords", PasswordController
     resources "/sessions", SessionController
 
-  end
-
-  scope "/", PushApiServer do
-    pipe_through [:browser, :authorization]
-
+    resources "/users", UserController
     resources "/projects", ProjectController
+    resources "/applications", ApplicationController
     resources "/pushes", PushController
-    resources "/parameters", ParameterController
 
-    resources "/users", UserController do
-      resources "/projects", ProjectController
-    end
-
-    resources "/applications", ApplicationController do
-      resources "/pushes", PushController do
-        resources "/parameters", ParameterController
+    resources "/projects", ProjectController do
+      resources "/applications", ApplicationController do
+        resources "/pushes", PushController do
+        end
       end
     end
   end
@@ -52,5 +42,6 @@ defmodule PushApiServer.Router do
   # Other scopes may use custom stacks.
   scope "/api", PushApiServer do
     pipe_through :api
+    resources "/pushes", Api.PushController
   end
 end

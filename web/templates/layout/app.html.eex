@@ -9,6 +9,18 @@
 
     <title>Hello PushApiServer!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAqlKB-3fbraWsfvxJMMx6QCPaoPJeSlhQ",
+        authDomain: "test-e5174.firebaseapp.com",
+        databaseURL: "https://test-e5174.firebaseio.com",
+        storageBucket: "test-e5174.appspot.com",
+        messagingSenderId: "311975232187"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
 
   <body>
@@ -17,6 +29,7 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><%= link "Signout", to: signout_path(@conn, :delete), method: "DELETE" %></li>
           </ul>
         </nav>
         <span class="logo"></span>
