@@ -1,5 +1,5 @@
-defmodule PushApiServer.ErrorView do
-  use PushApiServer.Web, :view
+defmodule PushAPIServer.ErrorView do
+  use PushAPIServer.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

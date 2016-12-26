@@ -1,7 +1,7 @@
-defmodule PushApiServer.ApplicationControllerTest do
-  use PushApiServer.ConnCase
+defmodule PushAPIServer.ApplicationControllerTest do
+  use PushAPIServer.ConnCase
 
-  alias PushApiServer.Application
+  alias PushAPIServer.Application
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 

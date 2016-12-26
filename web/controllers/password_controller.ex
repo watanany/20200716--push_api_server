@@ -1,5 +1,5 @@
-defmodule PushApiServer.PasswordController do
-  use PushApiServer.Web, :controller
+defmodule PushAPIServer.PasswordController do
+  use PushAPIServer.Web, :controller
 
   def index(conn, _params) do
   end

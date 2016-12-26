@@ -1,11 +1,11 @@
-defmodule PushApiServer.ChangesetView do
-  use PushApiServer.Web, :view
+defmodule PushAPIServer.ChangesetView do
+  use PushAPIServer.Web, :view
 
   @doc """
   Traverses and translates changeset errors.
 
   See `Ecto.Changeset.traverse_errors/2` and
-  `PushApiServer.ErrorHelpers.translate_error/1` for more details.
+  `PushAPIServer.ErrorHelpers.translate_error/1` for more details.
   """
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)

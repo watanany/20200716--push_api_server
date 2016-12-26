@@ -1,3 +1,3 @@
-defmodule PushApiServer.PasswordView do
-  use PushApiServer.Web, :view
+defmodule PushAPIServer.PasswordView do
+  use PushAPIServer.Web, :view
 end

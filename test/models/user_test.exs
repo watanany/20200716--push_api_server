@@ -1,7 +1,7 @@
-defmodule PushApiServer.UserTest do
-  use PushApiServer.ModelCase
+defmodule PushAPIServer.UserTest do
+  use PushAPIServer.ModelCase
 
-  alias PushApiServer.User
+  alias PushAPIServer.User
 
   @valid_attrs %{email: "some content", encrypted_password: "some content"}
   @invalid_attrs %{}

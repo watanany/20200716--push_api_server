@@ -1,5 +1,5 @@
-defmodule PushApiServer.PageController do
-  use PushApiServer.Web, :controller
+defmodule PushAPIServer.PageController do
+  use PushAPIServer.Web, :controller
 
   def index(conn, _params) do
     render conn, "index.html"

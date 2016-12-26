@@ -1,3 +1,3 @@
-defmodule PushApiServer.PushView do
-  use PushApiServer.Web, :view
+defmodule PushAPIServer.PushView do
+  use PushAPIServer.Web, :view
 end

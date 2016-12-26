@@ -1,7 +1,7 @@
-defmodule PushApiServer.Api.PushController do
-  use PushApiServer.Web, :controller
+defmodule PushAPIServer.API.PushController do
+  use PushAPIServer.Web, :controller
 
-  alias PushApiServer.Push
+  alias PushAPIServer.Push
 
   def index(conn, %{"server_key" => server_key}) do
     project = Repo.get_by!(Project, server_key: server_key)
@@ -23,7 +23,7 @@ defmodule PushApiServer.Api.PushController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(PushApiServer.ChangesetView, "error.json", changeset: changeset)
+        |> render(PushAPIServer.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -44,7 +44,7 @@ defmodule PushApiServer.Api.PushController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(PushApiServer.ChangesetView, "error.json", changeset: changeset)
+        |> render(PushAPIServer.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

@@ -1,4 +1,4 @@
-defmodule PushApiServer.ConnCase do
+defmodule PushAPIServer.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule PushApiServer.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias PushApiServer.Repo
+      alias PushAPIServer.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import PushApiServer.Router.Helpers
+      import PushAPIServer.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint PushApiServer.Endpoint
+      @endpoint PushAPIServer.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PushApiServer.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PushAPIServer.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PushApiServer.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(PushAPIServer.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

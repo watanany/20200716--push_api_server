@@ -1,3 +1,3 @@
-defmodule PushApiServer.LayoutViewTest do
-  use PushApiServer.ConnCase, async: true
+defmodule PushAPIServer.LayoutViewTest do
+  use PushAPIServer.ConnCase, async: true
 end

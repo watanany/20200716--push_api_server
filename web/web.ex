@@ -1,12 +1,12 @@
-defmodule PushApiServer.Web do
+defmodule PushAPIServer.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use PushApiServer.Web, :controller
-      use PushApiServer.Web, :view
+      use PushAPIServer.Web, :controller
+      use PushAPIServer.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule PushApiServer.Web do
     quote do
       use Phoenix.Controller
 
-      alias PushApiServer.Repo
+      alias PushAPIServer.Repo
       import Ecto
       import Ecto.Query
 
-      import PushApiServer.Router.Helpers
-      import PushApiServer.Gettext
+      import PushAPIServer.Router.Helpers
+      import PushAPIServer.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule PushApiServer.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import PushApiServer.Router.Helpers
-      import PushApiServer.ErrorHelpers
-      import PushApiServer.Gettext
+      import PushAPIServer.Router.Helpers
+      import PushAPIServer.ErrorHelpers
+      import PushAPIServer.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule PushApiServer.Web do
     quote do
       use Phoenix.Channel
 
-      alias PushApiServer.Repo
+      alias PushAPIServer.Repo
       import Ecto
       import Ecto.Query
-      import PushApiServer.Gettext
+      import PushAPIServer.Gettext
     end
   end
 

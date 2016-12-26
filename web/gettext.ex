@@ -1,11 +1,11 @@
-defmodule PushApiServer.Gettext do
+defmodule PushAPIServer.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import PushApiServer.Gettext
+      import PushAPIServer.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"

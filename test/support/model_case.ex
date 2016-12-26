@@ -1,4 +1,4 @@
-defmodule PushApiServer.ModelCase do
+defmodule PushAPIServer.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule PushApiServer.ModelCase do
 
   using do
     quote do
-      alias PushApiServer.Repo
+      alias PushAPIServer.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import PushApiServer.ModelCase
+      import PushAPIServer.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PushApiServer.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PushAPIServer.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PushApiServer.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(PushAPIServer.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule PushApiServer.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&PushApiServer.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&PushAPIServer.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

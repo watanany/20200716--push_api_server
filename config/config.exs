@@ -7,14 +7,14 @@ use Mix.Config
 
 # General application configuration
 config :push_api_server,
-  ecto_repos: [PushApiServer.Repo]
+  ecto_repos: [PushAPIServer.Repo]
 
 # Configures the endpoint
-config :push_api_server, PushApiServer.Endpoint,
+config :push_api_server, PushAPIServer.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QQzJMYhQ6VJYsWlzMp3bAi6bBVDKnGATVOzPNsOdKEKUwnMZCDQN6Iu0LAK9gg96",
-  render_errors: [view: PushApiServer.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PushApiServer.PubSub,
+  render_errors: [view: PushAPIServer.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: PushAPIServer.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

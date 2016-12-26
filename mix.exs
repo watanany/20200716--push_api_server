@@ -1,4 +1,4 @@
-defmodule PushApiServer.Mixfile do
+defmodule PushAPIServer.Mixfile do
   use Mix.Project
 
   def project do
@@ -17,7 +17,7 @@ defmodule PushApiServer.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {PushApiServer, []},
+    [mod: {PushAPIServer, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end

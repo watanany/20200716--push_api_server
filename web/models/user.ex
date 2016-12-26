@@ -1,5 +1,5 @@
-defmodule PushApiServer.User do
-  use PushApiServer.Web, :model
+defmodule PushAPIServer.User do
+  use PushAPIServer.Web, :model
 
   schema "users" do
     field :email, :string
@@ -7,7 +7,7 @@ defmodule PushApiServer.User do
     field :password_confirmation, :string, virtual: true
     field :encrypted_password, :string
 
-    has_many :projects, PushApiServer.Project
+    has_many :projects, PushAPIServer.Project
 
     timestamps()
   end

@@ -1,4 +1,4 @@
-defmodule PushApiServer.PushWorker do
+defmodule PushAPIServer.PushWorker do
   use Application
   use GenServer
 

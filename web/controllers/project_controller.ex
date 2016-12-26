@@ -1,8 +1,8 @@
-defmodule PushApiServer.ProjectController do
-  use PushApiServer.Web, :controller
-  use PushApiServer.Plugs.CurrentUser
+defmodule PushAPIServer.ProjectController do
+  use PushAPIServer.Web, :controller
+  use PushAPIServer.Plugs.CurrentUser
 
-  alias PushApiServer.Project
+  alias PushAPIServer.Project
 
   def index(conn, _params) do
     projects = Repo.all(Project, user_id: current_user.id)

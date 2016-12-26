@@ -1,7 +1,7 @@
-defmodule PushApiServer.UserController do
-  use PushApiServer.Web, :controller
+defmodule PushAPIServer.UserController do
+  use PushAPIServer.Web, :controller
 
-  alias PushApiServer.User
+  alias PushAPIServer.User
 
   def index(conn, _params) do
     users = Repo.all(User)

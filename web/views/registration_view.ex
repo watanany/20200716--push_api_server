@@ -1,3 +1,3 @@
-defmodule PushApiServer.RegistrationView do
-  use PushApiServer.Web, :view
+defmodule PushAPIServer.RegistrationView do
+  use PushAPIServer.Web, :view
 end
