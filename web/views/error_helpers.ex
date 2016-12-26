@@ -1,4 +1,4 @@
-defmodule PushAPIServer.ErrorHelpers do
+defmodule PushApiServer.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule PushAPIServer.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(PushAPIServer.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(PushApiServer.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(PushAPIServer.Gettext, "errors", msg, opts)
+      Gettext.dgettext(PushApiServer.Gettext, "errors", msg, opts)
     end
   end
 end

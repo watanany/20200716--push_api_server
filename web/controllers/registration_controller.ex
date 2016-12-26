@@ -1,7 +1,7 @@
-defmodule PushAPIServer.RegistrationController do
-  use PushAPIServer.Web, :controller
+defmodule PushApiServer.RegistrationController do
+  use PushApiServer.Web, :controller
 
-  alias PushAPIServer.User
+  alias PushApiServer.User
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})

@@ -1,3 +1,3 @@
-defmodule PushAPIServer.SessionView do
-  use PushAPIServer.Web, :view
+defmodule PushApiServer.SessionView do
+  use PushApiServer.Web, :view
 end

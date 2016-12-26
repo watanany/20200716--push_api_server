@@ -1,8 +1,8 @@
-defmodule PushAPIServer.Push do
-  use PushAPIServer.Web, :model
+defmodule PushApiServer.Push do
+  use PushApiServer.Web, :model
 
   schema "pushes" do
-    belongs_to :application, PushAPIServer.Application
+    belongs_to :application, PushApiServer.Application
 
     field :scheduled_at
     field :request_body, :map

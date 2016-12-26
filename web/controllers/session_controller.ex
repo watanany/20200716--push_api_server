@@ -1,7 +1,7 @@
-defmodule PushAPIServer.SessionController do
-  use PushAPIServer.Web, :controller
+defmodule PushApiServer.SessionController do
+  use PushApiServer.Web, :controller
 
-  alias PushAPIServer.User
+  alias PushApiServer.User
 
   def new(conn, params) do
     changeset = User.changeset(%User{})

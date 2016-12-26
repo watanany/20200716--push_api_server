@@ -1,7 +1,7 @@
-defmodule PushAPIServer.PushTest do
-  use PushAPIServer.ModelCase
+defmodule PushApiServer.PushTest do
+  use PushApiServer.ModelCase
 
-  alias PushAPIServer.Push
+  alias PushApiServer.Push
 
   @valid_attrs %{}
   @invalid_attrs %{}

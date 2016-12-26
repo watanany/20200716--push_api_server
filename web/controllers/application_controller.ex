@@ -1,19 +1,19 @@
-defmodule PushAPIServer.ApplicationController do
-  use PushAPIServer.Web, :controller
+defmodule PushApiServer.ApplicationController do
+  use PushApiServer.Web, :controller
 
-  alias PushAPIServer.Application
+  alias PushApiServer.Application
 
   def index(conn, _params) do
     applications = Repo.all(Application)
     render(conn, "index.html", applications: applications)
   end
 
-  def new(conn, _params) do
+  def new(conn, params) do
     changeset = Application.changeset(%Application{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"application" => application_params}) do
+  def create(conn, params = %{"application" => application_params}) do
     changeset = Application.changeset(%Application{}, application_params)
 
     case Repo.insert(changeset) do

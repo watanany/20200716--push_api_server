@@ -1,13 +1,13 @@
-defmodule PushAPIServer.Plugs.CurrentUser do
+defmodule PushApiServer.Plugs.CurrentUser do
   import Plug.Conn
   require Ecto
   require Ecto.Query
-  alias PushAPIServer.Repo
-  alias PushAPIServer.User
+  alias PushApiServer.Repo
+  alias PushApiServer.User
 
   defmacro __using__(_) do
     quote do
-      plug PushAPIServer.Plugs.CurrentUser
+      plug PushApiServer.Plugs.CurrentUser
 
       defmacro current_user do
         quote do
@@ -37,7 +37,7 @@ defmodule PushAPIServer.Plugs.CurrentUser do
       %User{} ->
         conn |> assign(:current_user, current_user)
       nil ->
-        url = PushAPIServer.Router.Helpers.signin_path(conn, :new, refer: conn.request_path)
+        url = PushApiServer.Router.Helpers.signin_path(conn, :new, refer: conn.request_path)
         conn
         |> Phoenix.Controller.redirect(to: url)
         |> halt

@@ -1,12 +1,12 @@
-defmodule PushAPIServer.Project do
-  use PushAPIServer.Web, :model
+defmodule PushApiServer.Project do
+  use PushApiServer.Web, :model
 
   schema "projects" do
     field :name, :string
     field :server_key, :string
 
-    belongs_to :user, PushAPIServer.User
-    has_many :applications, PushAPIServer.Application
+    belongs_to :user, PushApiServer.User
+    has_many :applications, PushApiServer.Application
 
     timestamps()
   end

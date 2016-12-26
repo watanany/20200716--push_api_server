@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :push_api_server, PushAPIServer.Endpoint,
+config :push_api_server, PushApiServer.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -10,7 +10,7 @@ config :push_api_server, PushAPIServer.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :push_api_server, PushAPIServer.Repo,
+config :push_api_server, PushApiServer.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",

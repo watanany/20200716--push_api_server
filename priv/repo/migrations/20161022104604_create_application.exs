@@ -1,4 +1,4 @@
-defmodule PushAPIServer.Repo.Migrations.CreateApplication do
+defmodule PushApiServer.Repo.Migrations.CreateApplication do
   use Ecto.Migration
 
   def change do

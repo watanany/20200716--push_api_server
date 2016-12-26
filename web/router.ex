@@ -1,5 +1,5 @@
-defmodule PushAPIServer.Router do
-  use PushAPIServer.Web, :router
+defmodule PushApiServer.Router do
+  use PushApiServer.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +13,7 @@ defmodule PushAPIServer.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PushAPIServer do
+  scope "/", PushApiServer do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index, as: :root
@@ -40,7 +40,7 @@ defmodule PushAPIServer.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", PushAPIServer do
+  scope "/api", PushApiServer do
     pipe_through :api
     resources "/pushes", API.PushController
   end

@@ -1,5 +1,5 @@
-defmodule PushAPIServer.PageControllerTest do
-  use PushAPIServer.ConnCase
+defmodule PushApiServer.PageControllerTest do
+  use PushApiServer.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

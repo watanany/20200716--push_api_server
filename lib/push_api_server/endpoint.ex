@@ -1,7 +1,7 @@
-defmodule PushAPIServer.Endpoint do
+defmodule PushApiServer.Endpoint do
   use Phoenix.Endpoint, otp_app: :push_api_server
 
-  socket "/socket", PushAPIServer.UserSocket
+  socket "/socket", PushApiServer.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule PushAPIServer.Endpoint do
     key: "_push_api_server_key",
     signing_salt: "yMTbHNc+"
 
-  plug PushAPIServer.Router
+  plug PushApiServer.Router
 end

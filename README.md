@@ -1,4 +1,4 @@
-# PushAPIServer
+# PushApiServer
 
 To start your Phoenix app:
 
