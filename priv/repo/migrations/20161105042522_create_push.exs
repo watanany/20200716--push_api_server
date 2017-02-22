@@ -3,10 +3,11 @@ defmodule PushApiServer.Repo.Migrations.CreatePush do
 
   def change do
     create table(:pushes) do
-      add :application_id, references(:applications, on_delete: :delete_all)
+      add :project_id, references(:projects, on_delete: :delete_all)
 
-      add :scheduled_at, :datetime, null: false
       add :request_body, :map, null: false
+      add :scheduled_at, :utc_datetime, null: false
+      add :sent_at, :utc_datetime
 
       timestamps()
     end

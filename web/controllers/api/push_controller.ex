@@ -1,6 +1,7 @@
 defmodule PushApiServer.API.PushController do
   use PushApiServer.Web, :controller
 
+  alias PushApiServer.Project
   alias PushApiServer.Push
 
   def index(conn, %{"server_key" => server_key}) do

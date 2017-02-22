@@ -2,10 +2,11 @@ defmodule PushApiServer.Push do
   use PushApiServer.Web, :model
 
   schema "pushes" do
-    belongs_to :application, PushApiServer.Application
+    belongs_to :project, PushApiServer.Project
 
-    field :scheduled_at
     field :request_body, :map
+    field :scheduled_at, Ecto.DateTime
+    field :sent_at, Ecto.DateTime
 
     timestamps()
   end
@@ -14,8 +15,12 @@ defmodule PushApiServer.Push do
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
+    request_body = Poison.decode!(params["request_body"])
+    scheduled_at = Ecto.DateTime.cast!(params["scheduled_at"])
     struct
-    |> cast(params, [:application_id, :scheduled_at, :request_body])
-    |> validate_required([:application_id, :scheduled_at, :request_body])
+    |> cast(params, [:project_id, :request_body, :scheduled_at, :sent_at])
+    |> validate_required([:project_id, :request_body, :scheduled_at])
+    |> put_change(:request_body, request_body)
+    |> put_change(:scheduled_at, scheduled_at)
   end
 end

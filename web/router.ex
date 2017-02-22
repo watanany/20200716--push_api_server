@@ -28,15 +28,9 @@ defmodule PushApiServer.Router do
 
     resources "/users", UserController
     resources "/projects", ProjectController
-    resources "/applications", ApplicationController
-    resources "/pushes", PushController
+    resources "/pushes", PushController, only: [:index, :show, :delete]
 
-    resources "/projects", ProjectController do
-      resources "/applications", ApplicationController do
-        resources "/pushes", PushController do
-        end
-      end
-    end
+    resources "/projects", ProjectController
   end
 
   # Other scopes may use custom stacks.

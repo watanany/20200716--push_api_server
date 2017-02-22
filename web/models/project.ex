@@ -6,7 +6,7 @@ defmodule PushApiServer.Project do
     field :server_key, :string
 
     belongs_to :user, PushApiServer.User
-    has_many :applications, PushApiServer.Application
+    has_many :pushes, PushApiServer.Push
 
     timestamps()
   end

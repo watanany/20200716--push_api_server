@@ -14,6 +14,7 @@ defmodule PushApiServer do
       supervisor(PushApiServer.Endpoint, []),
       # Start your own worker by calling: PushApiServer.Worker.start_link(arg1, arg2, arg3)
       # worker(PushApiServer.Worker, [arg1, arg2, arg3]),
+      worker(PushApiServer.Workers.PushSender, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

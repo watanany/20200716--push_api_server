@@ -28,7 +28,7 @@ defmodule PushApiServer.Plugs.CurrentUser do
         User
         |> Ecto.Query.where(id: ^current_user_id)
         |> Repo.one
-        |> Repo.preload(projects: [applications: [pushes: :parameters]])
+        |> Repo.preload(projects: :pushes)
       else
         nil
       end
